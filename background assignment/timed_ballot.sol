@@ -33,7 +33,7 @@ contract Ballot {
 
     /** 
      * @dev Create a new ballot to choose one of 'proposalNames'. 
-     * Adds start time of voting period.
+     * @dev Adds start time of voting period.
      * @param proposalNames names of proposals
      */
     constructor(bytes32[] memory proposalNames) {
@@ -125,7 +125,10 @@ contract Ballot {
         proposals[proposal].voteCount += sender.weight;
     }
 
-    // Retrieve how much time is left before voting period ends.
+    /** 
+    * @dev Retrieve how much time is left before voting period ends.
+    * @return time remaining, else states that voting period has ended.
+    */
     function timeLeft() view public returns(uint256) {
         uint256 timeDiff = (startTime + voteTimeLimit) - block.timestamp;
         require(timeDiff > 0, "Voting period has ended");
