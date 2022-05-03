@@ -108,9 +108,9 @@ contract Ballot {
     }
 
     /**
-     * @dev Give your vote (including votes delegated to you) to proposal 'proposals[proposal].name'.
+     * @dev Give your vote (including votes delegated to you) to proposal 'proposals[proposal].name'. Modifier voteEnded checks first if voting period has ended.
      * @param proposal index of proposal in the proposals array
-     * @modifier voteEnded checks first if voting period has ended.
+     * 
      */
     function vote(uint proposal) public voteEnded {
         Voter storage sender = voters[msg.sender];
